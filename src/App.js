@@ -1,23 +1,20 @@
 import logo from './logo.svg';
+import {LargeCard, SmallCard} from './components/Cards'
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const cardNames = ["Cuauh","Peter", "Chuy"]
+  const [count, setCount] = useState(0)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => setCount(count + 1)} >
+          Click Me
+      </button>
+      {cardNames.map(card => {
+        return <SmallCard cardName={`${card}'s card ${count}`} />
+      })}
+      <LargeCard />
     </div>
   );
 }
